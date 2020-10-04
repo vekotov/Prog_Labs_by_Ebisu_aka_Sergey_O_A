@@ -1,3 +1,4 @@
+
 //https://github.com/Ebisu02/Prog_Labs_by_Ebisu_aka_Sergey_O_A/commit/66696bf564953b2cb4f30fb8ce26d3dd82f1a1c9
 #include <iostream>
 #include <stdio.h>
@@ -7,6 +8,18 @@
 #include <stdint.h>
 #include <ctime>
 using namespace std;
+long int factorial(long int N)
+{
+  if (N<0)
+  {
+    cout << "\n Error: incorrect Number for factorial";
+    return 0;
+  }
+  if (N==0)
+    return 1;
+  else
+    return factorial(N-1)*N;
+}
 bool prime (int j)
 {
   //Проверка на Натуральность числа и отсев вариантов от 0 до 2
@@ -213,7 +226,20 @@ switch (Lab_Number)
         /*Для значений i=1, 2,..,n вычислить число сочетаний из n по
         i и занести результаты в массив  С={С1,С2,..,Сn}, используя
         Ci= n!/(i!(n - i)!).  Число n>0 ввести с клавиатуры.Полученный массив       вывести на экран.*/
-          int i,n;
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
+          int i,n,j;
+          cout << "Enter a end Number for variable i\n";
+          cin >> n;
+          int C[n];
+          for (i=1;i<=n;i++)
+          {
+            C[i] = (factorial(n)/(factorial(i)*factorial(n-i)));
+            cout << i << ")" << "Number of combinations from n to i, for i = "<< i << " is " << C[i] << endl;
+          }
+          return 0;
+        }
+        case 3: 
+        {
           
         }
       }
