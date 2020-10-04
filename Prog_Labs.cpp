@@ -1,4 +1,3 @@
-
 //https://github.com/Ebisu02/Prog_Labs_by_Ebisu_aka_Sergey_O_A/commit/66696bf564953b2cb4f30fb8ce26d3dd82f1a1c9
 #include <iostream>
 #include <stdio.h>
@@ -240,7 +239,35 @@ switch (Lab_Number)
         }
         case 3: 
         {
+          /*3.	Сформировать с помощью датчика случайных чисел в диапазоне [0,10] массив из 20 элементов вещественного типа. Вывести его на экран. Вывести элементы массива, большие своих соседей справа и слева.*/
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
+          srand(time(NULL));
+          float Massiv[20];
+          int i;
+          cout << "\t\t\tUr massive:\n";
+          for (i=0;i<20;i++)
+          {
+            Massiv[i]=0.01*(rand()%1001);
+            cout << "Massiv element [" << i+1 << "] = "<<
+            Massiv[i] << endl;
+          }
+          cout << "\t\t\tMassiv elements, which \n\t\t\tare larger than\n \t\t\ttheir neighbors \n \t\t\ton the right and left\n";
+          for (i=1;i<19;i++)
+          {
+            if (Massiv[i]>Massiv[i-1])
+              if (Massiv[i]>Massiv[i+1])
+              cout << "Massiv element [" << i << "]" << Massiv[i] << endl;
+          }
+          return 0;
+        }
+        case 4:
+        {
+          /*4.	Написать программу для проверки номера банковской карты по алгоритму Луна 
+	  (необходимо просуммировать все четные по номеру цифры последовательности, далее прибавить к сумме все нечетные по номеру цифры,
+	  помноженные на 2, при этом если произведение получается больше 9, то из него вычитается 9. Сумма должна быть кратной 10).
+	  Пример правильного номера – 4276 4400 1336 1511*/
           
+          return 0;
         }
       }
     }  
