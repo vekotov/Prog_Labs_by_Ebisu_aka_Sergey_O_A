@@ -5,6 +5,7 @@
 #include <cmath>
 #include <stdbool.h>
 #include <stdint.h>
+#include <ctime>
 using namespace std;
 bool prime (int j)
 {
@@ -166,6 +167,7 @@ switch (Lab_Number)
         }
         case 2:
         {
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
           float a,b,c,x,h,y,Ymin,Ymax;     
 	        a=2.14;b=-4.21;c=3.25;h=0.5;x=-4.5;Ymin=0;Ymax=0;   
 	        while (x>=-13.5)        
@@ -194,7 +196,24 @@ switch (Lab_Number)
       switch (Lab_Ex_Number)
       {
         case 1:
+        /*Сформировать с помощью датчика случайных чисел в диапазоне [-10,10] массив из 20 элементов целого типа. Вывести его на экран.  Затем вывести на экран  все положительные элементы массива, и все отрицательные элементы.*/
         {
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
+          srand(time(NULL));
+          int Random_Numbers[20];
+          for (int i=0;i<20;i++)
+          {  
+            Random_Numbers[i]=rand()%21 - 10;
+            cout << "Massiv Element" << "[" << i+1<<"] = "<<Random_Numbers[i]<<endl;
+          }
+          return 0;
+        }
+        case 2:
+        {
+        /*Для значений i=1, 2,..,n вычислить число сочетаний из n по
+        i и занести результаты в массив  С={С1,С2,..,Сn}, используя
+        Ci= n!/(i!(n - i)!).  Число n>0 ввести с клавиатуры.Полученный массив       вывести на экран.*/
+          int i,n;
           
         }
       }
