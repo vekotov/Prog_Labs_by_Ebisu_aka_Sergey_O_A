@@ -1,4 +1,4 @@
-//https://repl.it/@Ebisu02/Proglabs#main.cpp
+//https://github.com/Ebisu02/Prog_Labs_by_Ebisu_aka_Sergey_O_A/commit/66696bf564953b2cb4f30fb8ce26d3dd82f1a1c9
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,6 +6,30 @@
 #include <stdbool.h>
 #include <stdint.h>
 using namespace std;
+bool prime (int j)
+{
+  //Проверка на Натуральность числа и отсев вариантов от 0 до 2
+  if (j<2)
+    return false;
+  // 2 - Простое число
+  else if (j==2)
+    return true;
+  else if (j%2 == 0)
+  //Четные числа, кроме 2 - НЕ простые числа
+    return false;
+  int f=3;
+  //Перебор делителей
+  while (f*f <= j)
+  {
+    if (j%f == 0)
+    {
+      return false;
+    }
+  //Каждый последующий делителей увеличивается на 2.
+    f+=2;
+  }
+  return true;
+}
 int main ()
 {
 int Lab_Number;
@@ -15,7 +39,7 @@ switch (Lab_Number)
 {
   case 1:
     {
-      cout << "Ur lab #" << Lab_Number;
+      cout << "Ur lab #" << Lab_Number<<endl;
       float x, y, z, t;
       // t=1, z=3; Result ~ 0,04
 	    cout << "Enter variables t & z " << endl;
@@ -23,11 +47,11 @@ switch (Lab_Number)
 	    y = sin(t);
 	    x = (4*y*y)/(4*y*exp(z) - 2*t*t*t);
 	    cout << "Result " << x;
-      break;
+      return 0;
     }
   case 2:
   {
-    cout << "Ur lab #" << Lab_Number;
+    cout << "Ur lab #" << Lab_Number<<endl;
     float x1,x2,x3,x4,x5,Result;
     Result = 0;
     cout << "Enter number" << endl;
@@ -51,11 +75,11 @@ switch (Lab_Number)
     if (x5 > 0)
         Result = Result + x5;
     cout << "Result :  " <<  Result;
-    break;
+    return 0;
   }
   case 3:
     {
-      cout << "Ur lab #" << Lab_Number;
+      cout << "Ur lab #" << Lab_Number<<endl;
       int c;
       cout << "Enter a C variable\n";
       cin >> c;
@@ -82,11 +106,11 @@ switch (Lab_Number)
         case 9:cout << "Nine";break;
         default:cout<<"\nUnknown number, please enter a correct number from -9 to 9, thx";
       }
-      break;
+      return 0;
     }
     case 4:
     {
-      cout << "Ur lab #" << Lab_Number;
+      cout << "Ur lab #" << Lab_Number<<endl;;
       float s;
       int i;
       s=0;
@@ -94,13 +118,88 @@ switch (Lab_Number)
       for (i=1;i<=25;i++)
         s+=sin(i);
       cout << "Result :"<< s;
-      break;
+      return 0;
     }
     case 5:
     {
-      
+      cout << "Ur lab #" << Lab_Number<<endl;
+      int Lab_Ex_Number;
+      cout << "Enter a Number of Ex.\n";
+      cin >> Lab_Ex_Number;
+      switch (Lab_Ex_Number)
+      {
+        case 3:{
+        cout << "Ex. #" << Lab_Ex_Number<<endl;
+        int N,i;
+        //Ввод диапазона
+        cout << "\t\t\t\tEnter N\n";
+        cin >> N;
+        //Вывод надписи "Простые Числа"
+        cout << "\t\t\t\tPrime numbers: \n";
+        i=0; 
+        while (i<=N)
+          {
+            if(prime(i))
+              {
+                //Вывод Чисел простых
+                cout<<" "<<i;   
+              }
+            ++i;
+          }
+        cout << "  \n";
+        return 0;
+        }
+        case 1:
+        {
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
+          double pi;
+          int n;
+          n=0;
+          while (n<=10000000) 
+            {
+              pi+=(pow(-1,n)/(2*n+1));
+              n++;
+            }
+          pi*=4;   
+          cout << "\t\t\tNumber Pi with an accurate to 0.00001 is - " << pi;
+	        return 0;
+        }
+        case 2:
+        {
+          float a,b,c,x,h,y,Ymin,Ymax;     
+	        a=2.14;b=-4.21;c=3.25;h=0.5;x=-4.5;Ymin=0;Ymax=0;   
+	        while (x>=-13.5)        
+		      {           
+		        y=((a*x*x)+(b*x)+c)*sin(x);           
+		        x-=h;           	
+		        if (y>Ymax)               
+			        Ymax=y;            
+		        else             
+			      if (y<Ymin)                 
+				      Ymin=y;      
+		      }        
+	        cout << " Y_min =  " << Ymin<<endl;       
+	        cout << " Y_max =  " << Ymax<<endl;      
+	        return  0; // min=-361.783, max=308.497
+        }
+      return 0;
+      }  
+    }
+    case 6:
+    {
+      cout << "Ur lab #" << Lab_Number<<endl;
+      int Lab_Ex_Number;
+      cout << "Enter a Number of Ex.\n";
+      cin >> Lab_Ex_Number;
+      switch (Lab_Ex_Number)
+      {
+        case 1:
+        {
+          
+        }
+      }
     }  
-    default:cout<<"Unknown Lab_Number\nU have 2 variants:\n1.I still haven't done it\n2.It's a incorrect Number of Lab ;D";
+    default:{cout<<"Unknown Lab_Number\nU have 2 variants:\n1.I still haven't done it\n2.It's a incorrect Number of Lab ;D";return 0;}
   }
 return 0;
 }
