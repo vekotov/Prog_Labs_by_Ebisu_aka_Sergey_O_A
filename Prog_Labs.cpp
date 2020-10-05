@@ -6,7 +6,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <ctime>
+#include <string>
 using namespace std;
+// Функция факториала
 long int factorial(long int N)
 {
   if (N<0)
@@ -19,6 +21,7 @@ long int factorial(long int N)
   else
     return factorial(N-1)*N;
 }
+// Проверка числа на простоту
 bool prime (int j)
 {
   //Проверка на Натуральность числа и отсев вариантов от 0 до 2
@@ -50,6 +53,7 @@ cout << "Enter a number of lab\n";
 cin >> Lab_Number;
 switch (Lab_Number)
 {
+  //lab #1
   case 1:
     {
       cout << "Ur lab #" << Lab_Number<<endl;
@@ -62,6 +66,7 @@ switch (Lab_Number)
 	    cout << "Result " << x;
       return 0;
     }
+  //lab #2
   case 2:
   {
     cout << "Ur lab #" << Lab_Number<<endl;
@@ -90,6 +95,7 @@ switch (Lab_Number)
     cout << "Result :  " <<  Result;
     return 0;
   }
+  //lab #3
   case 3:
     {
       cout << "Ur lab #" << Lab_Number<<endl;
@@ -262,11 +268,101 @@ switch (Lab_Number)
         }
         case 4:
         {
-          /*4.	Написать программу для проверки номера банковской карты по алгоритму Луна 
-	  (необходимо просуммировать все четные по номеру цифры последовательности, далее прибавить к сумме все нечетные по номеру цифры,
-	  помноженные на 2, при этом если произведение получается больше 9, то из него вычитается 9. Сумма должна быть кратной 10).
-	  Пример правильного номера – 4276 4400 1336 1511*/
-          
+          /*4.	Написать программу для проверки номера банковской карты по алгоритму Луна (необходимо просуммировать все четные по номеру цифры последовательности, далее прибавить к сумме все нечетные по номеру цифры, помноженные на 2, при этом если произведение получается больше 9, то из него вычитается 9. Сумма должна быть кратной 10). Пример правильного номера – 4276 4400 1336 1511*/
+          cout << "Ex. #" << Lab_Ex_Number<<endl;
+          int i,n;
+          long int CARD_NUMBER,CARD_NUMBER2,CARD_NUMBER3;
+          int Massiv_Lunh[n];
+          cout << "Enter Your Card Number, please\n";
+          cin >> CARD_NUMBER;
+          CARD_NUMBER2 = CARD_NUMBER;
+          CARD_NUMBER3 = CARD_NUMBER;
+          n=0;
+          for (;CARD_NUMBER>0;n++)
+          //проверка на кол-во символов в номере карты
+          //чтобы знать из скольки чисел далее
+          //формировать массив
+          {
+            CARD_NUMBER/=10;
+          }
+          cout << "In Your card " << n << " numbers: \n";
+          i=0;
+          int CARD[n];
+          for (i=0;i<n;i++)
+          //внесение действительного номера карты в массив
+          //понадобится далее
+          {
+            CARD[n-i-1]=CARD_NUMBER3%10;
+            CARD_NUMBER3/=10;
+          }
+          int Lunh_Test;
+          while (i<n)
+          // внесение каждой цифры номера карты в массив
+          {
+            Massiv_Lunh[i]=CARD_NUMBER2%10;
+            if ((i%2)==1)
+            {
+              if ((Massiv_Lunh[i]*2)>9)
+                Massiv_Lunh[i]=(Massiv_Lunh[i]*2)-9;
+              else Massiv_Lunh[i]*=2;
+            }
+            CARD_NUMBER2/=10;
+            Lunh_Test+=Massiv_Lunh[i];
+            i++; 
+          } 
+          // Метод Луна
+          cout << endl;
+          if ((Lunh_Test%10) == 0)
+            cout << "\t\t\tYes, its a real card number,\n\t\t\tJust a moment, please\n\n"<< endl;
+          else {cout << "Error: Incorrect card number"<<endl;return 0;}
+          cout << "\t\t\tYour card is\n";
+          switch(CARD[0])
+          {
+            case 2: cout << "Mup";break;
+            case 3:
+             /*____30,36,38-Diners Club
+             ____31,35-JCB International
+            ____34,37-American Express */
+            {
+              switch(CARD[2])
+                {
+                  case 0:case 6:case 8:cout << "Diners Club\n";break;
+                  case 1:case 5:cout << "JCB International\n";break;
+                  case 4:case 7:cout << "American Express";break;
+                  default:cout << "Unknown Pay System\n";break; 
+                }break;
+            }
+            case 4: cout << "Visa\n";break;
+            case 5:switch(CARD[2])
+            /*50,56,57,58-Maestro 
+              51,52,53,54,55-MasterCard*/
+            {
+              case 0:case 6:case 7:case 8:cout << "Maestro\n";break;
+              case 1:case 2:case 3:case 4:case 5:cout << "MasterCard\n";break;
+            } break; 
+            case 6:switch(CARD[2])
+            { 
+            /*____60-Discover
+            ____62 - China UnionPay
+            ____63, 67 - Maestro*/
+            case 0: cout << "Discover\n";break;
+            case 2:cout << "China UnionPay\n";break;
+            case 3: case 7: cout << "Maestro\n";break;
+            }
+            break;
+            case 7: cout<<"Discont Card or other low popular PaySystems ;c\n";break;
+            default:cout<<"Unknown pay system\n";
+          }
+          int Clock;
+          Clock=0;
+          for (i=0;i<n;)
+          {
+            cout<<CARD[i];
+            Clock++;
+            if ((Clock%4)==0)
+              cout<<" ";
+            i++; 
+          }
           return 0;
         }
       }
